@@ -1,0 +1,32 @@
+{
+  "name": "wchanges",
+  "version": "0.0.0",
+  "description": "Tracking changes on the web pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saromanov/wchanges"
+  },
+  "keywords": [
+    "tracking",
+    "changes",
+    "webpage"
+  ],
+
+  "dependencies": {
+    "cron": "^1.0.9",
+    "htmlparser2": "^1.1.1",
+    "request": "^2.55.0",
+    "MD5": "^1.2.2",
+    "chalk": "^1.0.0",
+  },
+  "author": "Sergey Romanov <xxsmotur@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saromanov/wchanges/issues"
+  },
+  "homepage": "https://github.com/saromanov/wchanges"
+}
