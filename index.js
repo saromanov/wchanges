@@ -6,8 +6,9 @@ var chalk = require('chalk');
 
 
 
-var Wchanges = function(addr, time) {
-    cron(addr, time);
+var Wchanges = function(addr, opts) {
+    opts = opts || {};
+    cron(addr, opts);
 };
 
 
@@ -41,11 +42,15 @@ var get_page = function(addr) {
 };
 
 
-var cron = function(addr, time) {
+var cron = function(addr, opts) {
     console.log(chalk.green("Tracking of page " + addr + " is started"));
     //Now is by default
-    new CronJob('* * * * * *', function() {
-        get_page(addr, time);
+    var mask = '* * * * * *';
+    if(opts.cronmask !== undefined){
+        mask = opts.cronmask;
+    }
+    new CronJob(mask, function() {
+        get_page(addr, opts);
     }, null, true, 'America/Los_Angeles');
 
 };
