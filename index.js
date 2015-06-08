@@ -13,27 +13,27 @@ var Wchanges = function(addr, opts) {
 
 
 var get_page = function(addr, opts) {
-    if(typeof addr === 'string') {
+    if (typeof addr === 'string') {
         var md5_result = '';
-        request(addr, function(error, response, body){
-             if(!error && response.statusCode === 200){
-                 var result_str = '';
-                 var parser = new htmlparser.Parser({
-                    ontext: function(text){
-                        if(text.length > 1)
-                           result_str += text;
-                       },
-                 });
-                 parser.write(body);
-                 parser.end();
-                 if(md5_result === '')
-                   md5_result = md5(result_str);
-                 else{
+        request(addr, function(error, response, body) {
+            if (!error && response.statusCode === 200) {
+                var result_str = '';
+                var parser = new htmlparser.Parser({
+                    ontext: function(text) {
+                        if (text.length > 1)
+                            result_str += text;
+                    },
+                });
+                parser.write(body);
+                parser.end();
+                if (md5_result === '')
+                    md5_result = md5(result_str);
+                else {
                     md5_current = md5(result_str);
-                    if(md5_current !== md5_result)
+                    if (md5_current !== md5_result)
                         console.log(addr + ' has changed');
-                 
-                 }
+
+                }
             } else {
                 console.log(chalk.red(error));
             }
@@ -47,7 +47,7 @@ var cron = function(addr, opts) {
     console.log(chalk.green("Tracking of page " + addr + " is started"));
     //Now is by default
     var mask = '* * * * * *';
-    if(opts.cronmask !== undefined){
+    if (opts.cronmask !== undefined) {
         mask = opts.cronmask;
     }
     new CronJob(mask, function() {
@@ -57,4 +57,3 @@ var cron = function(addr, opts) {
 };
 
 module.exports = Wchanges;
-
