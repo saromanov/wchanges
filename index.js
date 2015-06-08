@@ -12,7 +12,7 @@ var Wchanges = function(addr, opts) {
 };
 
 
-var get_page = function(addr) {
+var get_page = function(addr, opts) {
     if(typeof addr === 'string') {
         var md5_result = '';
         request(addr, function(error, response, body){
@@ -32,11 +32,12 @@ var get_page = function(addr) {
                     md5_current = md5(result_str);
                     if(md5_current !== md5_result)
                         console.log(addr + ' has changed');
+                 
                  }
+            } else {
+                console.log(chalk.red(error));
+            }
 
-
-
-             }
         });
     }
 };
