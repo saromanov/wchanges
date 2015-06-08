@@ -21,7 +21,7 @@
     "htmlparser2": "^1.1.1",
     "request": "^2.55.0",
     "MD5": "^1.2.2",
-    "chalk": "^1.0.0",
+    "chalk": "^1.0.0"
   },
   "author": "Sergey Romanov <xxsmotur@gmail.com>",
   "license": "MIT",
